@@ -5,11 +5,13 @@ on:
   schedule:
     - cron:  '*/5 * * * *'
 jobs:
-  build:
+  benchmark:
     name: Run Some Scheduled Thing
     runs-on: ubuntu-20.04
     steps:
-      - name: Do Something
-        run: echo Doing Something...
+    - uses: actions/checkout@v2
+    - name: Print branch
+      run: |
+        git rev-parse --abbrev-ref HEAD
 #      - name: Do Something Based On Triggered Event Data
 #        run: 'echo "Triggered event text: ${{ github.event.client_payload.text }}"'
