@@ -1,3 +1,7 @@
+# Workflow that runs benchmarks on demand.
+# Unfortunately you can only run this workflow after committing it to master.
+# So if you change the YAML on a branch, you'll first have to merge that change
+# into master before you can run the modified YAML.
 name: Benchmark
 on:
   repository_dispatch:
@@ -9,11 +13,20 @@ jobs:
     steps:
     - name: Print Github Object
       run: 'echo "${{toJson(github)}}"'
-    - uses: actions/checkout@v2
+    - name: Checkout Branch
+      uses: actions/checkout@v2
       with:
         ref: '${{ github.event.client_payload.branch }}'
-    - name: Print branch
+    - name: Print Branch
       run: |
         git rev-parse --abbrev-ref HEAD
-#      - name: Do Something Based On Triggered Event Data
-#        run: 'echo "Triggered event text: ${{ github.event.client_payload.text }}"'
+    - name: Setup Java
+      uses: actions/setup-java@v1
+      with:
+        java-version: 14
+    - name: Run Benchmark
+      run: echo "TODO"
+    - name: Print Results
+      run: echo "TODO"
+    - name: Send results to any PRs for this branch.
+      run: echo "TODO"
