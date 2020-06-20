@@ -6,6 +6,9 @@ name: Benchmark
 on:
   repository_dispatch:
     types: benchmark
+  push:
+    branches:
+      - master
 jobs:
   benchmark:
     name: Benchmark
@@ -14,6 +17,7 @@ jobs:
     - name: Print Github Object
       run: 'echo "${{toJson(github)}}"'
     - name: Checkout Branch
+      if: ${{ github.event_name }} == 'repository_dispatch'
       uses: actions/checkout@v2
       with:
         ref: '${{ github.event.client_payload.branch }}'
