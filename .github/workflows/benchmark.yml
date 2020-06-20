@@ -7,6 +7,8 @@ jobs:
     name: Run Some Scheduled Thing
     runs-on: ubuntu-20.04
     steps:
+    - name: Print client payload
+      run: 'echo "${{github.event.client_payload}}"'
     - uses: actions/checkout@v2
       with:
         ref: '${{ github.event.client_payload.branch }}'
