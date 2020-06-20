@@ -4,7 +4,7 @@ on:
     types: benchmark
 jobs:
   benchmark:
-    name: Run Some Scheduled Thing
+    name: Benchmark
     runs-on: ubuntu-20.04
     steps:
     - name: Print client payload
