@@ -6,3 +6,5 @@ curl -H "Accept: application/vnd.github.everest-preview+json" \
      --request POST \
      --data '{"event_type": "benchmark", "client_payload": { "branch": "'$branch'"}}' \
      https://api.github.com/repos/alexklibisz/gh-actions-sandbox/dispatches
+     
+
